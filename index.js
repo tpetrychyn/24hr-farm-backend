@@ -17,7 +17,8 @@ function buildPdf() {
     var template = fs.readFileSync(path.join(__dirname, "assets", "template.html"), 'utf8')
 
     // get average of a data point
-    const lentilAverage = responses.reduce((lentilTotal, response) => lentilTotal + response.lentilPrice, 0) / responses.length
+    // const lentilAverage = responses.reduce((lentilTotal, response) => lentilTotal + response.lentilPrice, 0) / responses.length
+    const lentilAverage = 123123;
 
     // replace the templateString in the html template with the actual value
     template = template.replace('{{lentilAverage}}', lentilAverage)
@@ -32,6 +33,7 @@ function buildPdf() {
     })
 
     // sorry about promise hell
+    // thats okay taylor you did your best
     return html5ToPDF.start().then(() => {
         return html5ToPDF.build().then(() => {
             return html5ToPDF.close()
